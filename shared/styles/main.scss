@@ -1,0 +1,12 @@
+@import './colors.scss';
+@import './reset.scss';
+
+body {
+    color : var(--color-grey-900);
+    background: var(--color-grey-80);
+}
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}

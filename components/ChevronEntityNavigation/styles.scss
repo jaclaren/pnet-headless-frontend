@@ -1,0 +1,10 @@
+@import '../../shared/styles/icon.scss';
+
+.cenavigation {
+    display: flex;        
+
+    &__page {
+        color: var(--color-grey-900);
+        align-items: center; 
+    }
+}

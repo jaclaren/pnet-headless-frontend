@@ -1,0 +1,11 @@
+@import './breakpoints.scss';
+
+$gutter-default-size: 0.35rem;
+
+$font-family-primary: 'Source Sans Pro', sans-serif;
+$font-family-secondary: 'Poppins', sans-serif;
+
+$main-nav-bgcolor: var(--color-grey-150);
+$searchbutton-color-secondary: var(--color-grey-400);
+
+$mobilemenu-color-background: $main-nav-bgcolor;

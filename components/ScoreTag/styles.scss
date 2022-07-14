@@ -1,0 +1,44 @@
+@import '../../shared/styles/variables.scss';
+
+.score-tag {
+    $size-normal: 55px;
+    $size-large : 125px;
+       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 2;
+
+    font-size: 1.3rem;    
+
+    font-family: $font-family-secondary;
+    font-weight: 400;
+
+    background-color: green;
+    border-radius: 50%;
+    width: $size-normal;
+    height: $size-normal;
+
+    &--large {
+        width: $size-large;
+        height: $size-large;    
+        font-size: 3rem;
+        font-weight: 700;        
+    }
+
+    background-color: #089006;
+
+    @for $i from 0 through 100 {
+        &--score-#{$i} {
+            @if $i < 70 {
+                background-color: #ffe700;
+                color: rgb(77, 77, 1);
+            }
+            @if $i < 30 {
+                background-color: rgb(155, 13, 13);
+                color: white;
+            }
+        }
+    }
+} 

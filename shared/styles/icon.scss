@@ -1,0 +1,79 @@
+$bg-default-circle : var(--color-grey-50);
+
+%icon {
+  fill: var(--color-white1);
+}
+
+.icon {
+  &__search {
+    @extend %icon;
+  }
+
+  &__chevron {
+    @extend %icon;
+    svg {
+      fill: var(--color-grey-900);            
+    }
+  } 
+
+  $onhover_color : var(--color-grey-200);
+  $transition_attrs : 1.25s ease 0s;
+
+  &--circle {
+    background: $bg-default-circle;
+    border-radius: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background $transition_attrs;      // TODO: Unify with circle 
+
+    &:hover, &:focus {
+      background: $onhover_color;
+    }
+
+  }
+
+  &__404 {
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--color-grey2);
+    }
+  }
+
+  &__some {
+    circle {
+      transition: fill $transition_attrs;
+    }
+
+    &:hover, &:focus {
+      circle {
+        fill: $onhover_color;
+      }
+      path {
+        fill: white;
+      }
+
+    }
+
+    &__twitter, &__facebook, &__contact {
+      circle { fill: $bg-default-circle; } // circle      
+    }
+    &__facebook {
+      path { fill: white; } // f-letter
+    }
+    &__twitter {
+      path { fill: white; } // f-letter
+    }
+    &__contact {
+      svg {
+        height: 26px;
+        width: 26px;
+  
+      }
+      path { fill: white; } // f-letter
+    }
+  }
+}

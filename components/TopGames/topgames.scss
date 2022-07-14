@@ -1,0 +1,254 @@
+@import '../../shared/styles/variables.scss';
+
+.topgames {
+    display: grid;
+    & > * {
+      max-width: 100%;
+    }
+  
+    grid-template-rows: auto auto auto auto;    
+  
+    &__video {
+      border-top: solid 8px var(--color-accent-1000);   
+      position: relative;
+      width: 100%;
+      padding-bottom: 56%;
+      
+      iframe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 100%;       
+      }
+    }
+
+    &__navigation {
+        background-color: var(--color-grey-60);
+        display: flex;
+        justify-content: space-between;
+        
+        padding: 0;
+        > button {
+          padding: 0.75rem 1.25rem;
+        }
+    
+        &__button {
+          flex: 1 1;
+          background: none;
+          border: none;
+    
+          path {
+            fill: var(--color-grey-700);
+          }
+        }
+    
+        &__counter {
+          flex: 2 0;
+          text-align: center;
+          color: var(--color-grey-600);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          span {
+            padding: 0 0.15rem;
+            font-size: 1.25rem;
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+    
+        &:hover {
+          outline: none;
+        }
+        > * {
+        }
+      }
+  
+    &__gameinfo {
+      display: grid;
+      grid-template-columns: auto 20%;
+      grid-template-rows: auto auto auto;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(90deg, #0c0c0c, #292929);
+      grid-template-areas:
+        "a b"
+        "a b"
+        "a b";
+    }
+  
+    &__score {
+      grid-area: b;
+      align-self: center;
+      justify-self: right;
+    }
+  
+    &__darkmeta {
+      color: var(--color-grey-400);
+      font-size: 1rem;
+    }
+  
+    &__footer {
+      text-align: center;
+      width: 100%;
+    }
+  
+    &__platforms {
+      color: var(--color-accent-1000);
+      font-size: 0.85rem;
+    }
+  
+    &__title {
+      font-family: $font-family-secondary;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  
+    &__nav {
+      background-color: var(--color-grey-60);
+      display: flex;
+      justify-content: space-between;
+      
+      padding: 0;
+      > button {
+        padding: 0.75rem 1.25rem;
+      }
+  
+      &__button {
+        flex: 1 1;
+        background: none;
+        border: none;
+  
+        path {
+          fill: var(--color-grey-700);
+        }
+      }
+  
+      &__counter {
+        flex: 2 0;
+        text-align: center;
+        color: var(--color-grey-600);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        span {
+          padding: 0 0.15rem;
+          font-size: 1.25rem;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+  
+      &:hover {
+        outline: none;
+      }
+      > * {
+      }
+    }
+  
+    @media only screen and (min-width: $breakpoint-lg) {
+      box-shadow: #00000033 13px 13px 16px 0px;
+    }    
+  }
+  
+  @media only screen and (min-width: $breakpoint-sm) {
+    .c-topgame {
+      background: var(--color-grey-60) !important;
+      grid-template-columns: 70% auto;
+      grid-template-rows:  80px auto auto auto;
+      grid-template-areas:     
+      "info nav"
+      "vid quote"    
+      "footer footer"    
+      ; 
+  
+      &__quote {
+        grid-area: quote;      
+      }
+      
+      button {
+        cursor: pointer;
+      }
+  
+  
+      .game-quotebox {   
+        cursor: grab;           
+        justify-self: start;
+  
+        @media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+          display: none;
+        }
+        &__quote {   
+          margin-bottom: 1.5rem;
+               
+          @media only screen and (min-width: $breakpoint-sm) {
+            font-size: 0.9rem;
+          }
+          @media only screen and (min-width: $breakpoint-md) {
+            
+            font-size: 1.3rem;
+            line-height: 2rem;
+          }
+        }
+      }
+  
+      &__footer {
+        text-align: right;      
+  
+        & > * {
+          margin: 1rem;
+        }      
+  
+        grid-area: footer;
+        @media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+          grid-area: footer;
+        }
+        
+        align-self: center;
+        justify-self: center;
+  
+      }
+  
+      &__score {
+        visibility: hidden !important;
+      }
+  
+      &__gameinfo {
+        grid-area: info;      
+      }
+  
+      &__video {
+        border: none;
+  
+        @media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+          padding: 0;
+          $h: 500px;
+          max-height: $h !important; 
+          iframe {
+            max-height: $h !important; 
+          }        
+        }
+        grid-area: vid;
+      }
+  
+      &__nav {
+        grid-area: nav;  
+        background-color: var(--color-accent-1000);
+  
+        path {
+          fill: white;
+        }
+  
+        @media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+          &__counter { display: none; }   // element will become too tight otherwise
+        }
+      }
+    }
+  
+  }
+  

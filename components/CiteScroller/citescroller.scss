@@ -1,0 +1,108 @@
+@import '../../shared/styles/breakpoints.scss';
+
+.citescroller {
+    $pagination-height: 20px;
+    padding-bottom: $pagination-height * 3; 
+
+    .cite {       
+
+        & > * {
+            padding: 1rem 1.5rem;
+        }
+    }
+
+    &__navcontainer {
+        display: flex;        
+    }
+
+    &__slide {        
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+
+        & > * {                        
+            margin: 1rem;
+        }        
+    }
+
+    &__nav {
+
+        &--previous, &--next {            
+            &.swiper-button-disabled {
+                opacity: 0.2;                
+            }
+
+            display: none;
+            
+            margin: 0rem;    
+            flex: 1 1;
+            
+            justify-content: center;
+            align-items: center;
+            font-family: swiper-icons;
+            width: auto;
+            background-color: rgb(31, 31, 31);
+            height: 50px;                        
+            font-size: 1rem;
+            color: var(--color-grey-700);
+            
+        }
+
+        &--previous {
+            &::after {
+                content :"previous";
+            }            
+        }
+        &--next {            
+            &::after {
+                content :"next";
+            }                        
+        }
+    }
+
+    .swiper {
+        &-slide {
+            background-color: var(--color-grey-60);
+            height: 180px;
+        }
+
+    &-pagination {
+        // position: absolute;
+        bottom: $pagination-height;       
+        text-align: center;
+        width: 100%;
+        bottom: 10px;
+        
+        .swiper-pagination-bullet {
+            background-color: #2A2A2A;                 
+            width: 100%;
+            max-width: 29px;
+            opacity: 1;            
+            border-radius: 2px;            
+            content: "&nbsp;";
+            margin: 3px;
+            &-active {
+                background-color: var(--color-accent-1000);
+            }
+        }        
+        
+    }
+    }
+}
+@media only screen and (min-width: $breakpoint-lg) {    
+    .game-quoteboxlist__nav {
+        &--next, &--previous {
+            transition: all 0.4s ease-in-out;
+            &.swiper-button-disabled {
+                cursor: default;
+            }
+            &:hover {
+                color: white;
+                background: var(--color-grey-200);
+            }
+
+            display: flex;
+            cursor: pointer;
+        }
+    }    
+}
