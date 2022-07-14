@@ -1,0 +1,13 @@
+.topgames__video {
+    border-top: solid 8px var(--color-accent-1000);   
+    position: relative;
+    width: 100%;
+    padding-bottom: 56%;
+    
+    iframe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;       
+    }
+  }

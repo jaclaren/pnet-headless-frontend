@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import ChevronIcon from "../ChevronIcon";
+import ChevronButton from "../ChevronIcon";
 
 type TNavSize = 'large' | 'small'
 
@@ -13,7 +13,7 @@ interface IChevronEntityNavigationProps {
   size : TNavSize;
 }
 
-export const ChevronEntityNavigation: FunctionComponent<
+export const EntityNavigation: FunctionComponent<
   IChevronEntityNavigationProps
 > = (props) => {
   return (
@@ -22,7 +22,7 @@ export const ChevronEntityNavigation: FunctionComponent<
         className={`${props.baseClassName}__button ${props.baseClassName}__button--role-previous`}
         onClick={() => props.onUserClickedPreviousPage()}
       >
-        <ChevronIcon direction="left" />
+        <ChevronButton direction="left" />
       </button>
       {props.showPagination ? (
         <div className={`${props.baseClassName}__page`}>
@@ -36,12 +36,12 @@ export const ChevronEntityNavigation: FunctionComponent<
         className={`${props.baseClassName}__button ${props.baseClassName}__button--role-next`}
         onClick={() => props.onUserClickedNextPage()}
       >
-        <ChevronIcon direction="right" />
+        <ChevronButton direction="right" />
       </button>
     </div>
   );
 };
 
-ChevronEntityNavigation.defaultProps = {
+EntityNavigation.defaultProps = {
   baseClassName: `cenavigation`
 }

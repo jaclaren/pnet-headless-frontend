@@ -5,10 +5,10 @@ interface Props {
   onClick?: any;
 }
 
-const ChevronIcon = (props: Props) => {
+const ChevronButton = (props: Props) => {
   const isRight = props.direction === 'right'
   const d = !isRight ? "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" : "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-  const className = 'icon__chevron'
+  const className = `b-btn b-btn--chevron b-btn--bright`
 
   return (
     <div className={className} onClick={props.onClick}>
@@ -19,4 +19,4 @@ const ChevronIcon = (props: Props) => {
 
 }
 
-export default ChevronIcon;
+export default ChevronButton;

@@ -14,9 +14,9 @@ const TGames = withFetchedGameData(TopGames, `http://dev-peliarvostelut.net/wp-j
 const Home: NextPage = () => {
   return (
     <main className="main">
-    <TGames />
-    <LatestByReviews />
-    <WorthMention />    
+      <TGames />
+      <LatestByReviews />
+      <WorthMention />    
     </main>
   )
 }

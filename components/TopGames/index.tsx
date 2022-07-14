@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ChevronEntityNavigation } from "../ChevronEntityNavigation/ChevronEntityNavigation";
+import { EntityNavigation } from "../EntityNavigation/EntityNavigation";
 
-import ChevronIcon from "../ChevronIcon";
+import ChevronButton from "../ChevronIcon";
 import GameVideo from "../GameVideo";
 import CiteScroller from "../CiteScroller/CiteScroller";
 
@@ -23,7 +23,7 @@ interface ITopGamesProps {
 
 function TopGameInfo(props: any) {
   return (
-    <div className="topgames__gameinfo">
+    <div className="topgames__iteminfo">
       <div
         key={"topgame-gi-title-".concat(`${props.index}`)}
         className="fade-in fade-in--speed1 topgames__title"
@@ -71,7 +71,7 @@ const TopGames = (props: ITopGamesProps) => {
 
   return (
     <React.Fragment>
-      <ChevronEntityNavigation
+      <EntityNavigation
         onUserClickedPreviousPage={previousPage}
         maxIndex={props.maxItems}
         currentIndex={index}
@@ -89,8 +89,7 @@ const TopGames = (props: ITopGamesProps) => {
         <a
           href={props.items[index].href}
           className="c-topgame__btn-compilation button button--thin button--bright"
-        >
-          ??
+        >          
           {props.compilationLinkText}
         </a>
       </footer>

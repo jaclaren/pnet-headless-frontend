@@ -5,11 +5,12 @@
 @import './variables.scss';
 @import './reset.scss';
 
+@import './blocks/button.scss';
 @import './blocks/chervonentitynav.scss';
 @import './blocks/chevronicon.scss';
 @import './blocks/citescroller.scss';
 @import './blocks/scoretag.scss';
-@import './blocks/topgames.scss';
+@import './blocks/topgames/topgames.scss';
 
 body {
     color : var(--color-grey-900);

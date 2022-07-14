@@ -1,0 +1,11 @@
+.topgames__iteminfo {
+  display: grid;
+  grid-template-columns: auto 20%;
+  grid-template-rows: auto auto auto;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(90deg, #0c0c0c, #292929);
+  grid-template-areas:
+    "a b"
+    "a b"
+    "a b";
+}

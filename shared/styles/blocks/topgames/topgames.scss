@@ -1,3 +1,5 @@
+@import './_video/topgames_video.scss';
+@import './_iteminfo/topgames_iteminfo.scss';
 
 .topgames {
     display: grid;
@@ -7,20 +9,6 @@
   
     grid-template-rows: auto auto auto auto;    
   
-    &__video {
-      border-top: solid 8px var(--color-accent-1000);   
-      position: relative;
-      width: 100%;
-      padding-bottom: 56%;
-      
-      iframe {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 100%;       
-      }
-    }
-
     &__navigation {
         background-color: var(--color-grey-60);
         display: flex;
@@ -65,18 +53,6 @@
         > * {
         }
       }
-  
-    &__gameinfo {
-      display: grid;
-      grid-template-columns: auto 20%;
-      grid-template-rows: auto auto auto;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(90deg, #0c0c0c, #292929);
-      grid-template-areas:
-        "a b"
-        "a b"
-        "a b";
-    }
   
     &__score {
       grid-area: b;
