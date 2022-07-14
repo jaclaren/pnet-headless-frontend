@@ -1,4 +1,4 @@
-.topgames__iteminfo {
+.#{$topgames-classname}__iteminfo {
   display: grid;
   grid-template-columns: auto 20%;
   grid-template-rows: auto auto auto;

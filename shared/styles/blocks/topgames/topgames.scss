@@ -1,7 +1,22 @@
+$topgames-classname: 'b-topgames';
+
 @import './_video/topgames_video.scss';
 @import './_iteminfo/topgames_iteminfo.scss';
+@import './_navigation/topgames_navigation.scss';
 
-.topgames {
+.#{$topgames-classname} {      
+  @media only screen and (min-width: $breakpoint-sm) {
+    background: var(--color-grey-60) !important;
+    grid-template-columns: 70% auto;
+    grid-template-rows:  80px auto auto auto;
+    grid-template-areas:     
+    "info nav"
+    "vid quote"    
+    "footer footer"; 
+  }
+}
+
+.#{$topgames-classname} {
     display: grid;
     & > * {
       max-width: 100%;
@@ -132,15 +147,7 @@
   }
   
   @media only screen and (min-width: $breakpoint-sm) {
-    .c-topgame {
-      background: var(--color-grey-60) !important;
-      grid-template-columns: 70% auto;
-      grid-template-rows:  80px auto auto auto;
-      grid-template-areas:     
-      "info nav"
-      "vid quote"    
-      "footer footer"    
-      ; 
+    .#{$topgames-classname} {      
   
       &__quote {
         grid-area: quote;      
@@ -148,8 +155,7 @@
       
       button {
         cursor: pointer;
-      }
-  
+      }  
   
       .game-quotebox {   
         cursor: grab;           

@@ -23,22 +23,22 @@ interface ITopGamesProps {
 
 function TopGameInfo(props: any) {
   return (
-    <div className="topgames__iteminfo">
+    <div className="b-topgames__iteminfo">
       <div
         key={"topgame-gi-title-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 topgames__title"
+        className="fade-in fade-in--speed1 b-topgames__title"
       >
         {props.item.title}
       </div>
       <div
         key={"topgame-gi-platforms-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 topgames__platforms"
+        className="fade-in fade-in--speed1 b-topgames__platforms"
       >
         {props.item.platforms.join(",")}
       </div>
       <div
         key={"topgame-gi-darkmeta-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 topgames__darkmeta"
+        className="fade-in fade-in--speed1 b-topgames__darkmeta"
       >
         {!!props.item.reviews ? props.item.reviews.length : 0} arvostelua
       </div>
@@ -76,16 +76,16 @@ const TopGames = (props: ITopGamesProps) => {
         maxIndex={props.maxItems}
         currentIndex={index}
         onUserClickedNextPage={nextPage}
-        baseClassName="topgames__navigation cenavigation"
+        baseClassName="b-topgames__navigation cenavigation"
         showPagination={true}
         size="large"
       />
-      <div className="topgames__video">
+      <div className="b-topgames__video">
         <GameVideo videoUrl={props.items[index].video} />
       </div>
       <TopGameInfo index={index} item={props.items[index]}></TopGameInfo>
       <CiteScroller currentGameIndex={index} reviews={props.items[index].reviews}></CiteScroller>
-      <footer className="topgames__footer">
+      <footer className="b-topgames__footer">
         <a
           href={props.items[index].href}
           className="c-topgame__btn-compilation button button--thin button--bright"
