@@ -37,6 +37,7 @@ interface ICiteScrollerProps {
   currentGameIndex?: number;
   slideDelay?: number;
   onAllReviewsDisplayed?: Function;
+  onUserChangedSlide?: Function;
   onScrollPercentageChanged: { (percentage: number): void };
 }
 
@@ -70,6 +71,7 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       loop={true}
       autoplay={{
         delay: props.slideDelay,
+        disableOnInteraction: false
       }}
       // navigation
       pagination={{ clickable: true }}
@@ -77,10 +79,12 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       onReachEnd={() =>
         !!props.onAllReviewsDisplayed ? props.onAllReviewsDisplayed() : null
       }
-      onSwiper={(swiper) => {
-        console.log(swiper);
-      }}
       onSlideChange={(sw) => {
+        const userCausedChange = sw.touches.diff != 0
+
+        if(userCausedChange && !!props.onUserChangedSlide)
+          props.onUserChangedSlide()
+
         const percentage = sw.realIndex / props.reviews.length;
         props.onScrollPercentageChanged(percentage);
       }}
@@ -101,6 +105,7 @@ CiteScroller.defaultProps = {
   onAllReviewsDisplayed: () => {},
   slideDelay: 2000,
   onScrollPercentageChanged: (percentage: number) => {},
+  onUserChangedSlide: () => {}
 };
 
 export default CiteScroller;

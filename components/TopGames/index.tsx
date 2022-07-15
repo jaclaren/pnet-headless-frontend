@@ -84,6 +84,7 @@ const TopGames = (props: ITopGamesProps) => {
         currentGameIndex={index}
         reviews={props.items[index].reviews}
         slideDelay={props.quoteSlideDelay}
+        onUserChangedSlide={() => _setAutoPlayPrevented(true)}
         onScrollPercentageChanged={(percentage: number) =>
           _setCurrentScrollPercentage(percentage)
         }
