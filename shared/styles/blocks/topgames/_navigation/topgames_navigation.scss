@@ -1,7 +1,43 @@
+
+// {
+//       background-color: var(--color-grey-60);
+//       display: flex;
+//       justify-content: space-between;
+      
+//       padding: 0;
+//       > button {
+//         padding: 0.75rem 1.25rem;
+//       }
+  
+//       &__counter {
+//         flex: 2 0;
+//         text-align: center;
+//         color: var(--color-grey-600);
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+        
+//         span {
+//           padding: 0 0.15rem;
+//           font-size: 1.25rem;
+//           svg {
+//             width: 20px;
+//             height: 20px;
+//           }
+//         }
+//       }
+  
+//       &:hover {
+//         outline: none;
+//       }
+//       > * {
+//       }
+//     }
 .#{$topgames-classname}__navigation {
     background-color: var(--color-grey-60);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
     padding: 0;
     > button {
@@ -31,5 +67,7 @@
     }
     > * {
     }
+
+
 
 }

@@ -6,6 +6,13 @@ $topgames-classname: 'b-topgames';
 @import './_progressbar/topgames_progressbar.scss';
 
 .#{$topgames-classname} {      
+  grid-template-areas:     
+  "nav"  
+  "bar"        
+  "vid"
+  "info"        
+  "quote";
+
   @media only screen and (min-width: $breakpoint-sm) {
     background: var(--color-grey-60) !important;
     grid-template-columns: 70% auto;
@@ -25,9 +32,6 @@ $topgames-classname: 'b-topgames';
     }
   
     grid-template-rows: auto auto auto auto;    
-  
-    &__navigation {
-      }
   
     &__score {
       grid-area: b;
@@ -56,41 +60,7 @@ $topgames-classname: 'b-topgames';
       font-size: 1.5rem;
     }
   
-    &__nav {
-      background-color: var(--color-grey-60);
-      display: flex;
-      justify-content: space-between;
-      
-      padding: 0;
-      > button {
-        padding: 0.75rem 1.25rem;
-      }
-  
-      &__counter {
-        flex: 2 0;
-        text-align: center;
-        color: var(--color-grey-600);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        span {
-          padding: 0 0.15rem;
-          font-size: 1.25rem;
-          svg {
-            width: 20px;
-            height: 20px;
-          }
-        }
-      }
-  
-      &:hover {
-        outline: none;
-      }
-      > * {
-      }
-    }
-  
+     
     @media only screen and (min-width: $breakpoint-lg) {
       box-shadow: #00000033 13px 13px 16px 0px;
     }    
