@@ -12,14 +12,14 @@ interface PnetWPEndpointGameRow {
   reviews: any[];
   score: number | string;
   href: string;
-  video?: string;
-  secondsPerQuote: number;
+  video?: string;  
 }
 
 interface ITopGamesProps {
   maxItems: number;
   items: PnetWPEndpointGameRow[];
   compilationLinkText: string;
+  quoteSlideDelay: number;
 }
 
 function TopGameInfo(props: any) {
@@ -80,7 +80,7 @@ const TopGames = (props: ITopGamesProps) => {
         onAllReviewsDisplayed={nextPage}
         currentGameIndex={index}
         reviews={props.items[index].reviews}
-        slideDelay={2000}
+        slideDelay={props.quoteSlideDelay}
       ></CiteScroller>
       <footer className="b-topgames__footer">
         <a
@@ -98,6 +98,7 @@ TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
   secondsPerQuote: 5000,
+  quoteSlideDelay : 4000
 };
 
 export default TopGames;
