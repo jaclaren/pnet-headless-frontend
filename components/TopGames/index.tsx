@@ -27,24 +27,30 @@ const TopGames = (props: ITopGamesProps) => {
   const [index, _setIndex] = React.useState(0);
   const [currentScrollPercentage, _setCurrentScrollPercentage] =
     React.useState(0);
-  const [userInteracted, _setUserInteracted] = React.useState(false);
+  const [autoPlayPrevented, _setAutoPlayPrevented] = React.useState(false);
 
   const resetIndex = () => {
     _setIndex(0);
   };
 
+  const resetValues = () => {
+    _setAutoPlayPrevented(false)
+  }
+
   const nextPage = () => {
     const nextIndex = index + 1;
     _setIndex(nextIndex > props.maxItems - 1 ? 0 : nextIndex);
+    resetValues()
   };
 
   const previousPage = () => {
     const previousIndex = index - 1;
     _setIndex(previousIndex < 0 ? props.maxItems - 1 : previousIndex);
+    resetValues()
   };
 
   const handleAllReviewsDisplayed = () => {
-    if(!userInteracted)
+    if(!autoPlayPrevented)
       nextPage()
   }
 
@@ -62,12 +68,13 @@ const TopGames = (props: ITopGamesProps) => {
         size="large"
       />
       <ProgressBar
+        useDelay={!autoPlayPrevented}
         delay={props.quoteSlideDelay * props.items[index].reviews.length}        
         key={`${index}`}
       />
       <div className="b-topgames__video">
         <GameVideo
-          onUserStartedVideo={() => _setUserInteracted(true)}
+          onUserStartedVideo={() => _setAutoPlayPrevented(true)}
           videoUrl={props.items[index].video}
         />
       </div>
