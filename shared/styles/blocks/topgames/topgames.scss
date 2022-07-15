@@ -4,6 +4,7 @@ $topgames-classname: 'b-topgames';
 @import './_iteminfo/topgames_iteminfo.scss';
 @import './_navigation/topgames_navigation.scss';
 @import './_progressbar/topgames_progressbar.scss';
+@import './_title/topgames_title.scss';
 
 .#{$topgames-classname} {      
   grid-template-areas:     
@@ -32,34 +33,7 @@ $topgames-classname: 'b-topgames';
     }
   
     grid-template-rows: auto auto auto auto;    
-  
-    &__score {
-      grid-area: b;
-      align-self: center;
-      justify-self: right;
-    }
-  
-    &__darkmeta {
-      color: var(--color-grey-400);
-      font-size: 1rem;
-    }
-  
-    &__footer {
-      text-align: center;
-      width: 100%;
-    }
-  
-    &__platforms {
-      color: var(--color-accent-1000);
-      font-size: 0.85rem;
-    }
-  
-    &__title {
-      font-family: $font-family-secondary;
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-  
+ 
      
     @media only screen and (min-width: $breakpoint-lg) {
       box-shadow: #00000033 13px 13px 16px 0px;

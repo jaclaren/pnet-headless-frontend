@@ -28,6 +28,8 @@ interface ICiteScrollerProps {
   index?: number;
   baseClassName?: string;
   currentGameIndex?: number;
+  onAllReviewsDisplayed?: Function;
+  slideDelay?: number;
 }
 
 interface ICiteWithLinkProps {
@@ -60,12 +62,12 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       spaceBetween={50}
       loop={true}
       autoplay={{
-        delay: 6000        
+        delay: props.slideDelay        
       }}
       // navigation
       pagination={{ clickable: true }}            
       draggable={true}
-      
+      onReachEnd={() => !!props.onAllReviewsDisplayed ? props.onAllReviewsDisplayed() : null}      
       onSwiper={(swiper) => {console.log(swiper)}}
       onSlideChange={sw => {
       }}
@@ -84,6 +86,8 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
 
 CiteScroller.defaultProps = {
   baseClassName: `citescroller`,
+  onAllReviewsDisplayed: () => {},
+  slideDelay: 2000
 };
 
 export default CiteScroller;

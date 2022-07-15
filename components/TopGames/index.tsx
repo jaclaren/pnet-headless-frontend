@@ -13,6 +13,7 @@ interface PnetWPEndpointGameRow {
   score: number | string;
   href: string;
   video?: string;
+  secondsPerQuote: number;
 }
 
 interface ITopGamesProps {
@@ -24,30 +25,20 @@ interface ITopGamesProps {
 function TopGameInfo(props: any) {
   return (
     <div className="b-topgames__iteminfo">
-      <div
-        key={"topgame-gi-title-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 b-topgames__title"
-      >
-        {props.item.title}
+      <h2 className="b-topgames__title">{props.item.title}</h2>
+
+      <div className="b-topgames__score">
+        <ScoreTag
+          key={"topgame-gi-score-".concat(`${props.index}`)}
+          score={props.item.score}
+        ></ScoreTag>
       </div>
-      <div
-        key={"topgame-gi-platforms-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 b-topgames__platforms"
-      >
-        {props.item.platforms.join(",")}
-      </div>
-      <div
-        key={"topgame-gi-darkmeta-".concat(`${props.index}`)}
-        className="fade-in fade-in--speed1 b-topgames__darkmeta"
-      >
-        {!!props.item.reviews ? props.item.reviews.length : 0} arvostelua
-      </div>
-      <ScoreTag
-        key={"topgame-gi-score-".concat(`${props.index}`)}
-        score={props.item.score}
-      ></ScoreTag>{" "}
     </div>
   );
+}
+
+function ProgressBar() {
+  return <div className="b-topgames__progressbar">&nbsp;</div>;
 }
 
 const TopGames = (props: ITopGamesProps) => {
@@ -80,17 +71,22 @@ const TopGames = (props: ITopGamesProps) => {
         showPagination={true}
         size="large"
       />
-      <div className="b-topgames__progressbar">&nbsp;</div>
+      <ProgressBar />
       <div className="b-topgames__video">
         <GameVideo videoUrl={props.items[index].video} />
       </div>
       <TopGameInfo index={index} item={props.items[index]}></TopGameInfo>
-      <CiteScroller currentGameIndex={index} reviews={props.items[index].reviews}></CiteScroller>
+      <CiteScroller
+        onAllReviewsDisplayed={nextPage}
+        currentGameIndex={index}
+        reviews={props.items[index].reviews}
+        slideDelay={2000}
+      ></CiteScroller>
       <footer className="b-topgames__footer">
         <a
           href={props.items[index].href}
           className="c-topgame__btn-compilation button button--thin button--bright"
-        >          
+        >
           {props.compilationLinkText}
         </a>
       </footer>
@@ -101,6 +97,7 @@ const TopGames = (props: ITopGamesProps) => {
 TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
+  secondsPerQuote: 5000,
 };
 
 export default TopGames;
