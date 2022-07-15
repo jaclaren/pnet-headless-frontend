@@ -5,14 +5,15 @@ import ChevronButton from "../ChevronIcon";
 import GameVideo from "../GameVideo";
 import CiteScroller from "../CiteScroller/CiteScroller";
 
-import { ScoreTag } from "../ScoreTag/ScoreTag";
+import { TopGameInfo } from "./TopGameInfo";
+import { ProgressBar } from "./ProgressBar";
 interface PnetWPEndpointGameRow {
   title: string;
   platforms: any[];
   reviews: any[];
   score: number | string;
   href: string;
-  video?: string;  
+  video?: string;
 }
 
 interface ITopGamesProps {
@@ -22,27 +23,11 @@ interface ITopGamesProps {
   quoteSlideDelay: number;
 }
 
-function TopGameInfo(props: any) {
-  return (
-    <div className="b-topgames__iteminfo">
-      <h2 className="b-topgames__title">{props.item.title}</h2>
-
-      <div className="b-topgames__score">
-        <ScoreTag
-          key={"topgame-gi-score-".concat(`${props.index}`)}
-          score={props.item.score}
-        ></ScoreTag>
-      </div>
-    </div>
-  );
-}
-
-function ProgressBar() {
-  return <div className="b-topgames__progressbar">&nbsp;</div>;
-}
-
 const TopGames = (props: ITopGamesProps) => {
   const [index, _setIndex] = React.useState(0);
+  const [currentScrollPercentage, _setCurrentScrollPercentage] =
+    React.useState(0);
+  const [userInteracted, _setUserInteracted] = React.useState(false);
 
   const resetIndex = () => {
     _setIndex(0);
@@ -58,6 +43,11 @@ const TopGames = (props: ITopGamesProps) => {
     _setIndex(previousIndex < 0 ? props.maxItems - 1 : previousIndex);
   };
 
+  const handleAllReviewsDisplayed = () => {
+    if(!userInteracted)
+      nextPage()
+  }
+
   if (props.items.length < index || props.items.length == 0) return <></>;
 
   return (
@@ -71,16 +61,25 @@ const TopGames = (props: ITopGamesProps) => {
         showPagination={true}
         size="large"
       />
-      <ProgressBar />
+      <ProgressBar
+        delay={props.quoteSlideDelay * props.items[index].reviews.length}        
+        key={`${index}`}
+      />
       <div className="b-topgames__video">
-        <GameVideo videoUrl={props.items[index].video} />
+        <GameVideo
+          onUserStartedVideo={() => _setUserInteracted(true)}
+          videoUrl={props.items[index].video}
+        />
       </div>
       <TopGameInfo index={index} item={props.items[index]}></TopGameInfo>
       <CiteScroller
-        onAllReviewsDisplayed={nextPage}
+        onAllReviewsDisplayed={handleAllReviewsDisplayed}
         currentGameIndex={index}
         reviews={props.items[index].reviews}
         slideDelay={props.quoteSlideDelay}
+        onScrollPercentageChanged={(percentage: number) =>
+          _setCurrentScrollPercentage(percentage)
+        }
       ></CiteScroller>
       <footer className="b-topgames__footer">
         <a
@@ -98,7 +97,7 @@ TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
   secondsPerQuote: 5000,
-  quoteSlideDelay : 4000
+  quoteSlideDelay: 6000,
 };
 
 export default TopGames;

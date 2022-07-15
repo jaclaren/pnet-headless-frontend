@@ -1,0 +1,18 @@
+@keyframes pb-fill {
+    0% {
+        transform: scaleX(0)
+    }   
+    100% {
+        transform: scaleX(1)
+    } 
+}
+
+.b-progressbar {
+    background: var(--color-grey-10);       
+    &__bar {
+        background-color: var(--color-accent-1000);        
+        animation: pb-fill linear 5s;
+        animation-duration: 15s;
+        transform-origin: 0%;
+    }
+}

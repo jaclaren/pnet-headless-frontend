@@ -1,5 +1,12 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import SwiperCore, { Autoplay, Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+} from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import "swiper/css";
@@ -7,10 +14,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import 'swiper/css/effect-fade';
+import "swiper/css/effect-fade";
 
 // Swiper.use([Navigation, Pagination]);
-SwiperCore.use([Autoplay])
+SwiperCore.use([Autoplay]);
 
 export const entityToChar = (str: any) => {
   const textarea = document.createElement("textarea");
@@ -28,8 +35,9 @@ interface ICiteScrollerProps {
   index?: number;
   baseClassName?: string;
   currentGameIndex?: number;
-  onAllReviewsDisplayed?: Function;
   slideDelay?: number;
+  onAllReviewsDisplayed?: Function;
+  onScrollPercentageChanged: { (percentage: number): void };
 }
 
 interface ICiteWithLinkProps {
@@ -51,25 +59,30 @@ const CiteWithLink: FunctionComponent<ICiteWithLinkProps> = (props) => {
 };
 
 const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
-
   return (
     <Swiper
-      key={`sw${props.currentGameIndex}`}      
-      modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}      
+      key={`sw${props.currentGameIndex}`}
+      modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
       className={`${props.baseClassName}`}
       effect="fade"
       slidesPerView={1}
       spaceBetween={50}
       loop={true}
       autoplay={{
-        delay: props.slideDelay        
+        delay: props.slideDelay,
       }}
       // navigation
-      pagination={{ clickable: true }}            
+      pagination={{ clickable: true }}
       draggable={true}
-      onReachEnd={() => !!props.onAllReviewsDisplayed ? props.onAllReviewsDisplayed() : null}      
-      onSwiper={(swiper) => {console.log(swiper)}}
-      onSlideChange={sw => {
+      onReachEnd={() =>
+        !!props.onAllReviewsDisplayed ? props.onAllReviewsDisplayed() : null
+      }
+      onSwiper={(swiper) => {
+        console.log(swiper);
+      }}
+      onSlideChange={(sw) => {
+        const percentage = sw.realIndex / props.reviews.length;
+        props.onScrollPercentageChanged(percentage);
       }}
     >
       {props.reviews.map((review, index) => {
@@ -80,14 +93,14 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
         );
       })}
     </Swiper>
-
   );
 };
 
 CiteScroller.defaultProps = {
   baseClassName: `citescroller`,
   onAllReviewsDisplayed: () => {},
-  slideDelay: 2000
+  slideDelay: 2000,
+  onScrollPercentageChanged: (percentage: number) => {},
 };
 
 export default CiteScroller;
