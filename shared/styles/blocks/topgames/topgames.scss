@@ -3,16 +3,18 @@ $topgames-classname: 'b-topgames';
 @import './_video/topgames_video.scss';
 @import './_iteminfo/topgames_iteminfo.scss';
 @import './_navigation/topgames_navigation.scss';
+@import './_progressbar/topgames_progressbar.scss';
 
 .#{$topgames-classname} {      
   @media only screen and (min-width: $breakpoint-sm) {
     background: var(--color-grey-60) !important;
     grid-template-columns: 70% auto;
-    grid-template-rows:  80px auto auto auto;
+    // grid-template-rows:  80px auto;
     grid-template-areas:     
     "info nav"
-    "vid quote"    
-    "footer footer"; 
+    "bar bar"
+    "vid quote"        
+    "footer footer"
   }
 }
 
@@ -25,48 +27,6 @@ $topgames-classname: 'b-topgames';
     grid-template-rows: auto auto auto auto;    
   
     &__navigation {
-        background-color: var(--color-grey-60);
-        display: flex;
-        justify-content: space-between;
-        
-        padding: 0;
-        > button {
-          padding: 0.75rem 1.25rem;
-        }
-    
-        &__button {
-          flex: 1 1;
-          background: none;
-          border: none;
-    
-          path {
-            fill: var(--color-grey-700);
-          }
-        }
-    
-        &__counter {
-          flex: 2 0;
-          text-align: center;
-          color: var(--color-grey-600);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          
-          span {
-            padding: 0 0.15rem;
-            font-size: 1.25rem;
-            svg {
-              width: 20px;
-              height: 20px;
-            }
-          }
-        }
-    
-        &:hover {
-          outline: none;
-        }
-        > * {
-        }
       }
   
     &__score {
@@ -104,16 +64,6 @@ $topgames-classname: 'b-topgames';
       padding: 0;
       > button {
         padding: 0.75rem 1.25rem;
-      }
-  
-      &__button {
-        flex: 1 1;
-        background: none;
-        border: none;
-  
-        path {
-          fill: var(--color-grey-700);
-        }
       }
   
       &__counter {

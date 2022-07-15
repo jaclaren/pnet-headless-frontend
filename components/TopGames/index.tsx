@@ -70,7 +70,7 @@ const TopGames = (props: ITopGamesProps) => {
   if (props.items.length < index || props.items.length == 0) return <></>;
 
   return (
-    <React.Fragment>
+    <div className="b-topgames">
       <EntityNavigation
         onUserClickedPreviousPage={previousPage}
         maxIndex={props.maxItems}
@@ -80,6 +80,7 @@ const TopGames = (props: ITopGamesProps) => {
         showPagination={true}
         size="large"
       />
+      <div className="b-topgames__progressbar">&nbsp;</div>
       <div className="b-topgames__video">
         <GameVideo videoUrl={props.items[index].video} />
       </div>
@@ -93,7 +94,7 @@ const TopGames = (props: ITopGamesProps) => {
           {props.compilationLinkText}
         </a>
       </footer>
-    </React.Fragment>
+    </div>
   );
 };
 
