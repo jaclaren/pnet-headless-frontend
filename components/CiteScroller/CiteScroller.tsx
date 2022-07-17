@@ -38,7 +38,7 @@ interface ICiteScrollerProps {
   slideDelay?: number;
   onAllReviewsDisplayed?: Function;
   onUserChangedSlide?: Function;
-  onScrollPercentageChanged: { (percentage: number): void };  
+  onScrollPercentageChanged: { (percentage: number): void };    
   autoplay:boolean;
 }
 

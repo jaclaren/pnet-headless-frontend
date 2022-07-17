@@ -7,12 +7,14 @@ interface IProgressBarProps {
   key: string;
   paused: boolean;
   useDelay?: boolean;
+  onProgressAnimationEnded: any;
 }
 
 const ProgressBar: FunctionComponent<IProgressBarProps> = (props) => {
   return (
     <div className="b-topgames__progressbar b-progressbar">
       <div
+        onAnimationEnd={() => props.onProgressAnimationEnded()}
         key={`pb-${props.key}`}
         style={{
           animationDuration: `${props.delay ? props.delay / 1000 : 0}s`,
@@ -35,6 +37,7 @@ const ProgressBar: FunctionComponent<IProgressBarProps> = (props) => {
 ProgressBar.defaultProps = {
   delay: 5000,
   useDelay: true,
+  onProgressAnimationEnded: () => {}
 };
 
 export { ProgressBar };

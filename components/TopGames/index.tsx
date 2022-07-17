@@ -61,6 +61,10 @@ const TopGames = (props: ITopGamesProps) => {
     _setAutoPlayPrevented(true);
   }
 
+  function handleAnimationEnded() {
+    nextPage()
+  }
+
   function handleUserStartedVideo() {
     _setCiteAutoplayRunning(true);
     _setAutoPlayPrevented(true);
@@ -81,9 +85,10 @@ const TopGames = (props: ITopGamesProps) => {
       />
       <ProgressBar
         useDelay={!autoPlayPrevented}
-        delay={props.quoteSlideDelay}        
+        delay={props.quoteSlideDelay}                
         paused={autoPlayPaused}
         key={`${index}`}
+        onProgressAnimationEnded={() => handleAnimationEnded()}
       />
       <div className="b-topgames__video">
         <GameVideo
@@ -96,7 +101,7 @@ const TopGames = (props: ITopGamesProps) => {
         onAllReviewsDisplayed={handleAllReviewsDisplayed}
         currentGameIndex={index}        
         reviews={props.items[index].reviews}
-        slideDelay={props.secondsPerQuote}
+        slideDelay={props.secondsPerQuote}        
         onUserChangedSlide={handleUserChangedSlide}
         autoplay={citeAutoplayRunning}
         onScrollPercentageChanged={(percentage: number) =>
@@ -120,7 +125,8 @@ TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
   secondsPerQuote: 8000,
-  quoteSlideDelay: 20000,
+  // quoteSlideDelay: 20000,
+  quoteSlideDelay: 5000,
 };
 
 export default TopGames;
