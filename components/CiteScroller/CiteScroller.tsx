@@ -53,19 +53,20 @@ const CiteWithLink: FunctionComponent<ICiteWithLinkProps> = (props) => {
     <div className="cite swiper-slide">
       <blockquote className="cite__text fade-in">
         {entityToChar(props.cite)}.
-      </blockquote>      
+      </blockquote>
       <div className="cite__actionrow">
         <div className="cite__actionrow">
-          {formatSiteName(!! props.site ? props.site : ``)}
-        </div>        
-        <div className="cite__actionrow">
-          {props.score}
-        </div>                
-        <a rel="nofollow" className="button" href={props.url}>
-        Lue
+          {formatSiteName(!!props.site ? props.site : ``)}
+        </div>
+        <div className="cite__actionrow">{props.score}</div>
+        <a
+          rel="nofollow"
+          className=""
+          href={props.url}
+        >
+          Lue arvio
         </a>
-      </div>            
-      
+      </div>
     </div>
   );
 };
@@ -103,7 +104,12 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       {props.reviews.map((review, index) => {
         return (
           <SwiperSlide key={`ss${index}`}>
-            <CiteWithLink cite={review.cite} url={review.url} site={review.site} score={review.score} />
+            <CiteWithLink
+              cite={review.cite}
+              url={review.url}
+              site={review.site}
+              score={review.score}
+            />
           </SwiperSlide>
         );
       })}
@@ -122,35 +128,36 @@ CiteScroller.defaultProps = {
 
 export default CiteScroller;
 
-function formatSiteName(site: string): string {  
+function formatSiteName(site: string): string {
   const siteFormats = [
     {
       name: `game_reactor`,
-      formattedName : `Game Reactor Suomi`
+      formattedName: `Game Reactor Suomi`,
     },
     {
       name: `konsolifin`,
-      formattedName : `KonsoliFIN`
+      formattedName: `KonsoliFIN`,
     },
     {
       name: `muropaketti`,
-      formattedName : `Muropaketti`
+      formattedName: `Muropaketti`,
     },
     {
       name: `game_reality`,
-      formattedName : `GameReality`
+      formattedName: `GameReality`,
     },
     {
       name: `respawn`,
-      formattedName : `Respawn`
+      formattedName: `Respawn`,
     },
     {
       name: `live_gamers`,
-      formattedName : `Livegamers`
+      formattedName: `Livegamers`,
     },
-  ]
-  
-  const foundItem = siteFormats.find(t => t.name === site)    
-  return !!foundItem ? foundItem.formattedName : `${site.charAt(0).toUpperCase()}${site.slice(1)}`
-}
+  ];
 
+  const foundItem = siteFormats.find((t) => t.name === site);
+  return !!foundItem
+    ? foundItem.formattedName
+    : `${site.charAt(0).toUpperCase()}${site.slice(1)}`;
+}

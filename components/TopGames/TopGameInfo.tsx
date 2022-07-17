@@ -12,6 +12,12 @@ export function TopGameInfo(props: any) {
           score={props.item.score}
         ></ScoreTag>
       </div>
+
+      <a href={props.item.href} className="b-btn b-btn--solid b-btn--accent">
+        Kooste
+      </a>
+
+
     </div>
   );
 }

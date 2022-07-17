@@ -1,5 +1,22 @@
 .b-btn {
+    padding: 0.5rem 1rem;
+
     &--chevron {
+    }
+
+    &--accent {
+        background: var(--color-accent-1000);
+    }
+
+    &--border {
+        border: solid 2px;
+        &-round {
+            border-radius: 6px;            
+        }
+    }    
+
+    &--border-accent {
+        border-color: var(--color-accent-1000);        
     }
 
     &--bright {

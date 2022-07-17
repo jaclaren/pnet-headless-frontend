@@ -112,12 +112,6 @@ const TopGames = (props: ITopGamesProps) => {
         }
       ></CiteScroller>
       <footer className="b-topgames__footer">
-        <a
-          href={props.items[index].href}
-          className="c-topgame__btn-compilation button button--thin button--bright"
-        >
-          {props.compilationLinkText}
-        </a>
       </footer>
     </div>
   );
