@@ -5,6 +5,8 @@ import ChevronButton from "../ChevronIcon";
 import GameVideo from "../GameVideo";
 import CiteScroller from "../CiteScroller/CiteScroller";
 
+import _ from 'underscore';
+
 import { TopGameInfo } from "./TopGameInfo";
 import { ProgressBar } from "./ProgressBar";
 interface PnetWPEndpointGameRow {
@@ -21,6 +23,7 @@ interface ITopGamesProps {
   items: PnetWPEndpointGameRow[];
   compilationLinkText: string;
   quoteSlideDelay: number;
+  secondsPerQuote: number;
 }
 
 const TopGames = (props: ITopGamesProps) => {
