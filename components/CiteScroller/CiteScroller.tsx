@@ -39,6 +39,7 @@ interface ICiteScrollerProps {
   onAllReviewsDisplayed?: Function;
   onUserChangedSlide?: Function;
   onScrollPercentageChanged: { (percentage: number): void };  
+  autoplay:boolean;
 }
 
 interface ICiteWithLinkProps {
@@ -62,14 +63,14 @@ const CiteWithLink: FunctionComponent<ICiteWithLinkProps> = (props) => {
 const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
   return (
     <Swiper
-      key={`sw${props.currentGameIndex}`}
+      key={`sw${props.currentGameIndex}${props.autoplay ? `ap` : ``}`}
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
       className={`${props.baseClassName}`}
       effect="fade"
       slidesPerView={1}
       spaceBetween={50}
       loop={true}
-      // navigation
+      autoplay={!!props.autoplay && props.autoplay ? { delay: 200 } : false}
       pagination={{ clickable: true }}
       draggable={true}
       onReachEnd={() =>
@@ -84,10 +85,11 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
         const percentage = sw.realIndex / props.reviews.length;
         props.onScrollPercentageChanged(percentage);
       }}
-    >
+    >      
       {props.reviews.map((review, index) => {
         return (
           <SwiperSlide key={`ss${index}`}>
+            {props.autoplay ? `autoplay` : `no autoplay`}
             <CiteWithLink cite={review.cite} url={review.url} />
           </SwiperSlide>
         );
@@ -101,7 +103,8 @@ CiteScroller.defaultProps = {
   onAllReviewsDisplayed: () => {},
   slideDelay: 2000,
   onScrollPercentageChanged: (percentage: number) => {},
-  onUserChangedSlide: () => {}  
+  onUserChangedSlide: () => {},
+  autoplay: true
 };
 
 export default CiteScroller;

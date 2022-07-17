@@ -28,6 +28,8 @@ const TopGames = (props: ITopGamesProps) => {
   const [currentScrollPercentage, _setCurrentScrollPercentage] =
     React.useState(0);
   const [autoPlayPrevented, _setAutoPlayPrevented] = React.useState(false);
+  const [autoPlayPaused, _setAutoPlayPaused] = React.useState(false);  
+  const [citeAutoplayRunning, _setCiteAutoplayRunning] = React.useState(false);
 
   const resetIndex = () => {
     _setIndex(0);
@@ -35,6 +37,8 @@ const TopGames = (props: ITopGamesProps) => {
 
   const resetValues = () => {
     _setAutoPlayPrevented(false)
+    _setAutoPlayPaused(false)
+    _setCiteAutoplayRunning(false)
   }
 
   const nextPage = () => {
@@ -50,14 +54,16 @@ const TopGames = (props: ITopGamesProps) => {
   };
 
   const handleAllReviewsDisplayed = () => {
-    if(!autoPlayPrevented)
-      nextPage()
+  }
+
+  const handleUserChangedSlide = () => {    
+    _setAutoPlayPaused(true);
   }
 
   if (props.items.length < index || props.items.length == 0) return <></>;
 
   return (
-    <div className="b-topgames">
+    <div className="b-topgames">      
       <EntityNavigation
         onUserClickedPreviousPage={previousPage}
         maxIndex={props.maxItems}
@@ -70,11 +76,12 @@ const TopGames = (props: ITopGamesProps) => {
       <ProgressBar
         useDelay={!autoPlayPrevented}
         delay={props.quoteSlideDelay * props.items[index].reviews.length}        
+        paused={autoPlayPaused}
         key={`${index}`}
       />
       <div className="b-topgames__video">
         <GameVideo
-          onUserStartedVideo={() => _setAutoPlayPrevented(true)}
+          onUserStartedVideo={() => handleUserStartedVideo()}
           videoUrl={props.items[index].video}
         />
       </div>
@@ -84,7 +91,8 @@ const TopGames = (props: ITopGamesProps) => {
         currentGameIndex={index}        
         reviews={props.items[index].reviews}
         slideDelay={props.quoteSlideDelay}
-        onUserChangedSlide={() => _setAutoPlayPrevented(true)}
+        onUserChangedSlide={handleUserChangedSlide}
+        autoplay={citeAutoplayRunning}
         onScrollPercentageChanged={(percentage: number) =>
           _setCurrentScrollPercentage(percentage)
         }
@@ -99,13 +107,17 @@ const TopGames = (props: ITopGamesProps) => {
       </footer>
     </div>
   );
+
+  function handleUserStartedVideo() {
+    _setCiteAutoplayRunning(true)
+  }
 };
 
 TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
   secondsPerQuote: 5000,
-  quoteSlideDelay: 500,
+  quoteSlideDelay: 2500,
 };
 
 export default TopGames;

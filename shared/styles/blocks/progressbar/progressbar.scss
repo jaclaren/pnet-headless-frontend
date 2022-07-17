@@ -8,7 +8,8 @@
 }
 
 .b-progressbar {
-    background: var(--color-grey-10);       
+    // background: var(--color-grey-10);       
+    background: #581420;
     &__bar {        
         animation: pb-fill linear 5s;
         animation-duration: 15s;
@@ -20,6 +21,10 @@
 
         &--grey {
             background-color: var(--color-grey-80);
+        }
+
+        &--paused {
+            // background-color: var(--color-grey-80);
         }
 
         &--full {
