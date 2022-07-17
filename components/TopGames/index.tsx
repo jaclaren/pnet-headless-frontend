@@ -58,6 +58,12 @@ const TopGames = (props: ITopGamesProps) => {
 
   const handleUserChangedSlide = () => {    
     _setAutoPlayPaused(true);
+    _setAutoPlayPrevented(true);
+  }
+
+  function handleUserStartedVideo() {
+    _setCiteAutoplayRunning(true);
+    _setAutoPlayPrevented(true);
   }
 
   if (props.items.length < index || props.items.length == 0) return <></>;
@@ -75,7 +81,7 @@ const TopGames = (props: ITopGamesProps) => {
       />
       <ProgressBar
         useDelay={!autoPlayPrevented}
-        delay={props.quoteSlideDelay * props.items[index].reviews.length}        
+        delay={props.quoteSlideDelay}        
         paused={autoPlayPaused}
         key={`${index}`}
       />
@@ -90,7 +96,7 @@ const TopGames = (props: ITopGamesProps) => {
         onAllReviewsDisplayed={handleAllReviewsDisplayed}
         currentGameIndex={index}        
         reviews={props.items[index].reviews}
-        slideDelay={props.quoteSlideDelay}
+        slideDelay={props.secondsPerQuote}
         onUserChangedSlide={handleUserChangedSlide}
         autoplay={citeAutoplayRunning}
         onScrollPercentageChanged={(percentage: number) =>
@@ -108,16 +114,13 @@ const TopGames = (props: ITopGamesProps) => {
     </div>
   );
 
-  function handleUserStartedVideo() {
-    _setCiteAutoplayRunning(true)
-  }
 };
 
 TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
-  secondsPerQuote: 5000,
-  quoteSlideDelay: 2500,
+  secondsPerQuote: 8000,
+  quoteSlideDelay: 20000,
 };
 
 export default TopGames;

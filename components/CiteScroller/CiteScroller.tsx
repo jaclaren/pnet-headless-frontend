@@ -70,7 +70,7 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       slidesPerView={1}
       spaceBetween={50}
       loop={true}
-      autoplay={!!props.autoplay && props.autoplay ? { delay: 200 } : false}
+      autoplay={!!props.autoplay && props.autoplay ? { delay: props.slideDelay, disableOnInteraction: false } : false}
       pagination={{ clickable: true }}
       draggable={true}
       onReachEnd={() =>
@@ -100,7 +100,7 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
 CiteScroller.defaultProps = {
   baseClassName: `citescroller`,
   onAllReviewsDisplayed: () => {},
-  slideDelay: 2000,
+  slideDelay: 4000,
   onScrollPercentageChanged: (percentage: number) => {},
   onUserChangedSlide: () => {},
   autoplay: true
