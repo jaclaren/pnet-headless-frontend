@@ -81,7 +81,7 @@ const TopGames = (props: ITopGamesProps) => {
       <TopGameInfo index={index} item={props.items[index]}></TopGameInfo>
       <CiteScroller
         onAllReviewsDisplayed={handleAllReviewsDisplayed}
-        currentGameIndex={index}
+        currentGameIndex={index}        
         reviews={props.items[index].reviews}
         slideDelay={props.quoteSlideDelay}
         onUserChangedSlide={() => _setAutoPlayPrevented(true)}
@@ -105,7 +105,7 @@ TopGames.defaultProps = {
   maxItems: 10,
   compilationLinkText: "Pelin kooste",
   secondsPerQuote: 5000,
-  quoteSlideDelay: 6000,
+  quoteSlideDelay: 500,
 };
 
 export default TopGames;

@@ -38,7 +38,7 @@ interface ICiteScrollerProps {
   slideDelay?: number;
   onAllReviewsDisplayed?: Function;
   onUserChangedSlide?: Function;
-  onScrollPercentageChanged: { (percentage: number): void };
+  onScrollPercentageChanged: { (percentage: number): void };  
 }
 
 interface ICiteWithLinkProps {
@@ -69,10 +69,6 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       slidesPerView={1}
       spaceBetween={50}
       loop={true}
-      autoplay={{
-        delay: props.slideDelay,
-        disableOnInteraction: false
-      }}
       // navigation
       pagination={{ clickable: true }}
       draggable={true}
@@ -105,7 +101,7 @@ CiteScroller.defaultProps = {
   onAllReviewsDisplayed: () => {},
   slideDelay: 2000,
   onScrollPercentageChanged: (percentage: number) => {},
-  onUserChangedSlide: () => {}
+  onUserChangedSlide: () => {}  
 };
 
 export default CiteScroller;
