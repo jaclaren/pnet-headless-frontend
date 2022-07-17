@@ -16,7 +16,6 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 
-// Swiper.use([Navigation, Pagination]);
 SwiperCore.use([Autoplay]);
 
 export const entityToChar = (str: any) => {
@@ -38,24 +37,35 @@ interface ICiteScrollerProps {
   slideDelay?: number;
   onAllReviewsDisplayed?: Function;
   onUserChangedSlide?: Function;
-  onScrollPercentageChanged: { (percentage: number): void };    
-  autoplay:boolean;
+  onScrollPercentageChanged: { (percentage: number): void };
+  autoplay: boolean;
 }
 
 interface ICiteWithLinkProps {
   cite?: string | undefined;
   url: string | undefined;
+  site: string | undefined;
+  score: string;
 }
 
 const CiteWithLink: FunctionComponent<ICiteWithLinkProps> = (props) => {
   return (
     <div className="cite swiper-slide">
-      <blockquote className="game-quotebox__quote fade-in">
-        {entityToChar(props.cite)}
-      </blockquote>
-      <a className="button" href={props.url}>
+      <blockquote className="cite__text fade-in">
+        {entityToChar(props.cite)}.
+      </blockquote>      
+      <div className="cite__actionrow">
+        <div className="cite__actionrow">
+          {formatSiteName(!! props.site ? props.site : ``)}
+        </div>        
+        <div className="cite__actionrow">
+          {props.score}
+        </div>                
+        <a rel="nofollow" className="button" href={props.url}>
         Lue
-      </a>
+        </a>
+      </div>            
+      
     </div>
   );
 };
@@ -70,26 +80,30 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
       slidesPerView={1}
       spaceBetween={50}
       loop={true}
-      autoplay={!!props.autoplay && props.autoplay ? { delay: props.slideDelay, disableOnInteraction: false } : false}
+      autoplay={
+        !!props.autoplay && props.autoplay
+          ? { delay: props.slideDelay, disableOnInteraction: false }
+          : false
+      }
       pagination={{ clickable: true }}
       draggable={true}
       onReachEnd={() =>
         !!props.onAllReviewsDisplayed ? props.onAllReviewsDisplayed() : null
       }
       onSlideChange={(sw) => {
-        const userCausedChange = sw.touches.diff != 0
+        const userCausedChange = sw.touches.diff != 0;
 
-        if(userCausedChange && !!props.onUserChangedSlide)
-          props.onUserChangedSlide()
+        if (userCausedChange && !!props.onUserChangedSlide)
+          props.onUserChangedSlide();
 
         const percentage = sw.realIndex / props.reviews.length;
         props.onScrollPercentageChanged(percentage);
       }}
-    >      
+    >
       {props.reviews.map((review, index) => {
         return (
-          <SwiperSlide key={`ss${index}`}>            
-            <CiteWithLink cite={review.cite} url={review.url} />
+          <SwiperSlide key={`ss${index}`}>
+            <CiteWithLink cite={review.cite} url={review.url} site={review.site} score={review.score} />
           </SwiperSlide>
         );
       })}
@@ -103,7 +117,40 @@ CiteScroller.defaultProps = {
   slideDelay: 4000,
   onScrollPercentageChanged: (percentage: number) => {},
   onUserChangedSlide: () => {},
-  autoplay: true
+  autoplay: true,
 };
 
 export default CiteScroller;
+
+function formatSiteName(site: string): string {  
+  const siteFormats = [
+    {
+      name: `game_reactor`,
+      formattedName : `Game Reactor Suomi`
+    },
+    {
+      name: `konsolifin`,
+      formattedName : `KonsoliFIN`
+    },
+    {
+      name: `muropaketti`,
+      formattedName : `Muropaketti`
+    },
+    {
+      name: `game_reality`,
+      formattedName : `GameReality`
+    },
+    {
+      name: `respawn`,
+      formattedName : `Respawn`
+    },
+    {
+      name: `live_gamers`,
+      formattedName : `Livegamers`
+    },
+  ]
+  
+  const foundItem = siteFormats.find(t => t.name === site)    
+  return !!foundItem ? foundItem.formattedName : `${site.charAt(0).toUpperCase()}${site.slice(1)}`
+}
+
