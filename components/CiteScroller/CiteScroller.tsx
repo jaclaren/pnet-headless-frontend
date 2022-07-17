@@ -88,8 +88,7 @@ const CiteScroller: FunctionComponent<ICiteScrollerProps> = (props) => {
     >      
       {props.reviews.map((review, index) => {
         return (
-          <SwiperSlide key={`ss${index}`}>
-            {props.autoplay ? `autoplay` : `no autoplay`}
+          <SwiperSlide key={`ss${index}`}>            
             <CiteWithLink cite={review.cite} url={review.url} />
           </SwiperSlide>
         );
