@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "jc-glossycards": "github:jaclaren/jc_glossycards",
     "next": "12.2.2",
+    "pnet-common": "github:jaclaren/pnet-common",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-player": "^2.10.1",

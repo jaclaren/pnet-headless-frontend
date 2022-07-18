@@ -1185,6 +1185,10 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+"jc-glossycards@github:jaclaren/jc_glossycards":
+  version "1.0.0"
+  resolved "https://codeload.github.com/jaclaren/jc_glossycards/tar.gz/03d447d5adc98791e701301b2500056080e49ccb"
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -1511,6 +1515,10 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
+
+"pnet-common@github:jaclaren/pnet-common":
+  version "1.0.0"
+  resolved "https://codeload.github.com/jaclaren/pnet-common/tar.gz/e92f54f45665a4770060990e2316fe8083f4e4a8"
 
 postcss@8.4.5:
   version "8.4.5"

@@ -7,6 +7,8 @@ import TopGames from '../components/TopGames'
 import { withFetchedGameData } from '../hocs/WithFetchedGameData'
 import styles from '../styles/Home.module.css'
 
+import {RJCGlossyCardList} from 'jc-glossycards'
+
 const domain = `http://dev-peliarvostelut.net/`;
 
 
@@ -15,10 +17,12 @@ const WorthMention = withFetchedGameData(PreviouslyUpdatedGames, `${domain}/wp-j
 const TGames = withFetchedGameData(TopGames, `${domain}/wp-json/public/game/get?itemCount=30&mode=top-recent`, `Virhe ladattaessa pelejä`)  
 const Home: NextPage = () => {
   return (
-    <main className="main">
+    <main className="main">      
       <TGames />
       <LatestByReviews />
       <WorthMention />    
+      <RJCGlossyCardList items={[]} />
+      {/* <div className="jc-glossycards">Glossycards</div> */}
     </main>
   )
 }
