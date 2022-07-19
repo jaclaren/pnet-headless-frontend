@@ -20,8 +20,7 @@ const Home: NextPage = () => {
     <main className="main">      
       <TGames />
       <LatestByReviews />
-      <WorthMention />    
-      <RJCGlossyCardList items={[]} />
+      <WorthMention />          
       {/* <div className="jc-glossycards">Glossycards</div> */}
     </main>
   )

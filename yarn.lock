@@ -1187,7 +1187,7 @@ isexe@^2.0.0:
 
 "jc-glossycards@github:jaclaren/jc_glossycards":
   version "1.0.0"
-  resolved "https://codeload.github.com/jaclaren/jc_glossycards/tar.gz/03d447d5adc98791e701301b2500056080e49ccb"
+  resolved "https://codeload.github.com/jaclaren/jc_glossycards/tar.gz/048ac44f0504aa06ea1281de23ceec4cd3045d82"
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
