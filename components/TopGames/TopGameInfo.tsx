@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { ScoreTag } from "../ScoreTag/ScoreTag";
 
@@ -13,10 +14,11 @@ export function TopGameInfo(props: any) {
         ></ScoreTag>
       </div>
 
-      <a href={props.item.href} className="b-btn b-btn--solid b-btn--accent">
-        Kooste
-      </a>
-
+      <Link href={`/kooste/${props.item.slug}`}>
+        <a className="b-btn b-btn--solid b-btn--accent">
+          Kooste
+        </a>
+      </Link>
 
     </div>
   );

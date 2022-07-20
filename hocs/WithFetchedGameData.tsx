@@ -1,5 +1,6 @@
 import { useState, useEffect, FunctionComponent } from "react";
 import axios from "axios";
+import { convertItems } from "../utils/convertItems";
 
 function Error(props: any) {
   return <div className="error">{props.message}</div>;
@@ -37,7 +38,7 @@ export function withFetchedGameData(
           return;
         }        
         
-        setItems(response.data.body.games);
+           setItems(convertItems(response.data.body.games));
       })
       .catch((err: any) => setFetchError(true));
     }, [])
@@ -53,3 +54,5 @@ export function withFetchedGameData(
   return WithFetchedGameData
 
 }
+
+
