@@ -1518,7 +1518,7 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
 
 "pnet-common@github:jaclaren/pnet-common":
   version "1.0.0"
-  resolved "https://codeload.github.com/jaclaren/pnet-common/tar.gz/e92f54f45665a4770060990e2316fe8083f4e4a8"
+  resolved "https://codeload.github.com/jaclaren/pnet-common/tar.gz/fcd70cbf0a76cb40b3664f736190f90e0a13feb9"
 
 postcss@8.4.5:
   version "8.4.5"
