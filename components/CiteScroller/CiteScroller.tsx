@@ -24,12 +24,12 @@ export const entityToChar = (str: any) => {
   return textarea.value;
 };
 
-interface PnetWPEndpointReviewRow {
+export interface PnetWPEndpointReviewRow {
   title?: string;
   cite?: string;
   url?: string;
 }
-interface ICiteScrollerProps {
+export interface ICiteScrollerProps {
   reviews: PnetWPEndpointReviewRow[];
   index?: number;
   baseClassName?: string;
@@ -37,11 +37,11 @@ interface ICiteScrollerProps {
   slideDelay?: number;
   onAllReviewsDisplayed?: Function;
   onUserChangedSlide?: Function;
-  onScrollPercentageChanged: { (percentage: number): void };
-  autoplay: boolean;
+  onScrollPercentageChanged?: { (percentage: number): void };
+  autoplay?: boolean;
 }
 
-interface ICiteWithLinkProps {
+export interface ICiteWithLinkProps {
   cite?: string | undefined;
   url: string | undefined;
   site: string | undefined;
@@ -124,6 +124,7 @@ CiteScroller.defaultProps = {
   onScrollPercentageChanged: (percentage: number) => {},
   onUserChangedSlide: () => {},
   autoplay: true,
+  reviews: []
 };
 
 export default CiteScroller;
