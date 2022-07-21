@@ -26,6 +26,7 @@ import { convertItems } from "../../utils/convertItems";
 import CiteScroller, {
   PnetWPEndpointReviewRow,
 } from "../../components/CiteScroller/CiteScroller";
+import { CompilationReviewList } from "../../components/CompilationReviewList/CompilationReviewList";
 
 interface IGameProps {
   slug: any;
@@ -142,14 +143,6 @@ function CompilationHeader(props: {
   );
 }
 
-function CompilationReviewList() {
-  return (
-    <ul className="review__list">
-      <li className="review__item game__review">Review</li>
-    </ul>
-  );
-}
-
 const GamePage: FunctionComponent<IGameProps> = (props) => {
   const router = useRouter();
   const { pid } = router.query;
@@ -192,7 +185,7 @@ const GamePage: FunctionComponent<IGameProps> = (props) => {
     {JSON.stringify(router.query)}    
       <section className="contentsect contentsect--header">
         <CompilationHeader item={item} />
-        <CompilationReviewList />
+        <CompilationReviewList reviews={item.reviews as PnetWPEndpointReviewRow[]}/>
       </section>
       <section className="contentsect">
         <CiteScroller reviews={item.reviews as PnetWPEndpointReviewRow[]} />

@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
+import { formatSiteName } from "../../utils/formatSiteName";
 
 SwiperCore.use([Autoplay]);
 
@@ -28,6 +29,8 @@ export interface PnetWPEndpointReviewRow {
   title?: string;
   cite?: string;
   url?: string;
+  score?: number;
+  site: string;
 }
 export interface ICiteScrollerProps {
   reviews: PnetWPEndpointReviewRow[];
@@ -129,36 +132,4 @@ CiteScroller.defaultProps = {
 
 export default CiteScroller;
 
-function formatSiteName(site: string): string {
-  const siteFormats = [
-    {
-      name: `game_reactor`,
-      formattedName: `Game Reactor Suomi`,
-    },
-    {
-      name: `konsolifin`,
-      formattedName: `KonsoliFIN`,
-    },
-    {
-      name: `muropaketti`,
-      formattedName: `Muropaketti`,
-    },
-    {
-      name: `game_reality`,
-      formattedName: `GameReality`,
-    },
-    {
-      name: `respawn`,
-      formattedName: `Respawn`,
-    },
-    {
-      name: `live_gamers`,
-      formattedName: `Livegamers`,
-    },
-  ];
 
-  const foundItem = siteFormats.find((t) => t.name === site);
-  return !!foundItem
-    ? foundItem.formattedName
-    : `${site.charAt(0).toUpperCase()}${site.slice(1)}`;
-}

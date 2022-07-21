@@ -12,7 +12,7 @@ export const ScoreTag : FunctionComponent<IScoreTagProps> = (props) =>{
         "score-tag--score-".concat(`${props.score}`),
       ].join(" ")}
     >
-      {props.score} 90
+      {props.score}
     </div>
   );
 }
