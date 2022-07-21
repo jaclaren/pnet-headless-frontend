@@ -1,12 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export function Navigation() {
   return (
-    <nav className="navigation navigation--primary">
-      <Link to="/">Etusivu</Link>
-      <Link to="/koosteet">Koosteet</Link>
-      <Link to="/tiedot">Tiedot</Link>
+    <nav className="navigation navigation--main">
+      <Link href="/">Etusivu</Link>
+      <Link href="/koosteet">Koosteet</Link>
     </nav>
   );
 }
