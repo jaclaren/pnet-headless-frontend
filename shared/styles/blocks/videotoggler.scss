@@ -1,0 +1,29 @@
+.videotoggler {
+    min-height: 30rem;
+    
+    &__videos {
+        display: flex;
+        // flex-direction: row;
+
+        & > * {
+            flex-grow: 5;
+        }
+    }
+
+    &__cites {        
+        max-width: 20vw;
+        min-height: 200px;
+        flex-grow: 0;
+        flex-shrink: 5;        
+    }
+
+    &__videos {
+        width: auto;
+        flex-grow: 5;
+        flex-basis: 1200px;
+    }
+
+    &__col {
+
+    }
+}

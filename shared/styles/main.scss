@@ -9,6 +9,7 @@
 @import './blocks/chervonentitynav.scss';
 @import './blocks/chevronicon.scss';
 @import './blocks/citescroller.scss';
+@import './blocks/videotoggler.scss';
 @import './blocks/section.scss';
 @import './blocks/scoretag.scss';
 @import './blocks/navigation.scss';
@@ -26,5 +27,6 @@ body {
 }
 
 .pnet {    
-    margin: 6rem auto;
+    margin: 0 auto;
+    margin-top: 6rem;
 }

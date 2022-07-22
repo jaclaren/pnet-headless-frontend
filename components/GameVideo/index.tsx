@@ -16,7 +16,7 @@ const GameVideo = (props: IGameVideoProps) => {
   }, []);
 
   return (
-    <div>
+    <>
       {hasWindow ? (
         <ReactPlayer
           className={props.className}
@@ -28,7 +28,7 @@ const GameVideo = (props: IGameVideoProps) => {
       ) : (
         ``
       )}
-    </div>
+    </>
   );
 };
 
