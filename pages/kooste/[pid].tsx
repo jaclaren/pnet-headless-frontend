@@ -27,6 +27,7 @@ import CiteScroller, {
   PnetWPEndpointReviewRow,
 } from "../../components/CiteScroller/CiteScroller";
 import { CompilationReviewList } from "../../components/CompilationReviewList/CompilationReviewList";
+import GameVideo from "../../components/GameVideo";
 
 interface IGameProps {
   slug: any;
@@ -182,12 +183,13 @@ const GamePage: FunctionComponent<IGameProps> = (props) => {
 
   return (
     <>    
-      <section className="contentsect contentsect--header">
+      <section className="section">
         <CompilationHeader item={item} />
         <CompilationReviewList reviews={item.reviews as PnetWPEndpointReviewRow[]}/>
       </section>
-      <section className="contentsect">
+      <section className="section">
         <CiteScroller reviews={item.reviews as PnetWPEndpointReviewRow[]} />
+        <GameVideo videoUrl={item.video} />
       </section>
     </>
   );
