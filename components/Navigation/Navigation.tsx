@@ -5,18 +5,23 @@ import { SiteLogo } from "../SiteLogo/SiteLogo";
 export function Navigation() {
   return (
     <nav className="navigation navigation--main">
-      <div className="sitelogo sitelogo--primary">
+      <div className="sitelogo sitelogo--navigation navigation__column">
         <SiteLogo />
       </div>
-      <ul className="navigation__links">
+      <ul className="navigation__links navigation__column">
         <li className="navigation__link">
           <Link href="/">Etusivu</Link>
         </li>
         <li className="navigation__link">
           <Link href="/koosteet">Koosteet</Link>
         </li>
+        <li className="navigation__link">
+          <Link href="/tiedot">Tiedot</Link>
+        </li>
         <div className="navigation__link navigation__search">
-          <SearchIcon />
+          <button className="b-btn b-btn--transparent">
+            <SearchIcon />
+          </button>
         </div>
       </ul>
     </nav>
