@@ -29,13 +29,14 @@ export const VideoToggleWithCite: FunctionComponent<
         )}
       </div>
       <div className="videotoggler__videos videotoggler__row">
+        <div className="videotoggler__col videotoggler_videos">
+          <GameVideo className="b-gamevideo videotoggler__video" videoUrl={videoUrl} />
+        </div>
         <div className="videotoggler__col videotoggler__cites">
           <CiteScroller
+            baseClassName="citescroller videotoggler__citescroller"
             reviews={props.item.reviews as PnetWPEndpointReviewRow[]}
           />
-        </div>
-        <div className="videotoggler__col videotoggler_videos">
-          <GameVideo videoUrl={videoUrl} />
         </div>
       </div>
     </div>

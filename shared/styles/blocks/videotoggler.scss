@@ -1,6 +1,6 @@
 .videotoggler {
     min-height: 30rem;
-    
+
     &__videos {
         display: flex;
         // flex-direction: row;
@@ -21,6 +21,14 @@
         width: auto;
         flex-grow: 5;
         flex-basis: 1200px;
+    }
+
+    &__video {
+        height: 460px;         
+    }    
+
+    &__citescroller {
+        // height: 100%;
     }
 
     &__col {
