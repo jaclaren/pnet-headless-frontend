@@ -23,11 +23,11 @@ import {
 } from "react";
 import axios from "axios";
 import { convertItems } from "../../utils/convertItems";
-import CiteScroller, {
+import {
   PnetWPEndpointReviewRow,
 } from "../../components/CiteScroller/CiteScroller";
 import { CompilationReviewList } from "../../components/CompilationReviewList/CompilationReviewList";
-import GameVideo from "../../components/GameVideo";
+import { VideoToggleWithCite } from "../../components/VideoToggleWithCite/VideoToggleWithCite";
 
 interface IGameProps {
   slug: any;
@@ -46,8 +46,7 @@ const useGameAPIData = (url: string): IUseGameAPIData => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if(!url || url.length == 0)
-      return
+    if (!url || url.length == 0) return;
 
     axios
       .get(url)
@@ -78,7 +77,7 @@ const useGameAPIData = (url: string): IUseGameAPIData => {
 };
 interface IGame {}
 
-interface IGameAPIRow {
+export interface IGameAPIRow {
   aggregated_image_title: any;
   aggregated_image_url: string;
   average_score: number;
@@ -98,6 +97,7 @@ interface IGameAPIRow {
   slug: string;
   title: string;
   video: string;
+  gameplay_video?: string;
   reviews?: any[];
 }
 
@@ -147,7 +147,7 @@ function CompilationHeader(props: {
 const GamePage: FunctionComponent<IGameProps> = (props) => {
   const router = useRouter();
   const { pid } = router.query;
-  
+
   const [item, setItem] = useState<IGameAPIRow>({
     aggregated_image_title: ``,
     aggregated_image_url: ``,
@@ -169,6 +169,7 @@ const GamePage: FunctionComponent<IGameProps> = (props) => {
     title: ``,
     video: ``,
     reviews: [],
+    gameplay_video: ``,
   });
 
   const { fetchError, items, loading } = useGameAPIData(
@@ -182,14 +183,15 @@ const GamePage: FunctionComponent<IGameProps> = (props) => {
   if (!item) return <></>;
 
   return (
-    <>    
+    <>
       <section className="section">
         <CompilationHeader item={item} />
-        <CompilationReviewList reviews={item.reviews as PnetWPEndpointReviewRow[]}/>
+        <CompilationReviewList
+          reviews={item.reviews as PnetWPEndpointReviewRow[]}
+        />
       </section>
-      <section className="section">
-        <CiteScroller reviews={item.reviews as PnetWPEndpointReviewRow[]} />
-        <GameVideo videoUrl={item.video} />
+      <section className="section compilation__video">
+        <VideoToggleWithCite item={item} />
       </section>
     </>
   );
