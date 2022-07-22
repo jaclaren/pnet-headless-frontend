@@ -1,0 +1,40 @@
+.sitelogo {
+    &--primary {
+        & > svg {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+.sitelogo-side-1 {
+  fill: var(--color-accent-logo-front-outer)
+}
+
+.sitelogo-side-1, .sitelogo-side-2, .sitelogo-side-3, .sitelogo-side-4, .sitelogo-side-5, .sitelogo-side-6, .sitelogo-side-7 {
+  fill-rule: evenodd;
+}
+
+.sitelogo-side-2 {
+  fill: var(--color-accent-logo-under);
+}
+
+.sitelogo-side-3 {
+  fill: var(--color-accent-logo-front-inner);
+}
+
+.sitelogo-side-4 {
+  fill: var(--color-accent-logo-top-outer);
+}
+
+.sitelogo-side-5 {
+  fill: var(--color-accent-logo-top-inner);
+}
+
+.sitelogo-side-6 {
+  fill: var(--color-accent-logo-right-outer);
+}
+
+.sitelogo-side-7 {
+  fill: var(--color-accent-logo-right-inner);
+}

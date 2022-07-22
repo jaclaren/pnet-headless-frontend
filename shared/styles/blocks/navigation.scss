@@ -1,0 +1,19 @@
+.navigation {
+    display: inline-flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    background: var(--color-grey-150);
+    width: 100%;
+    height: var(--global-nav-height);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    z-index: 2020;
+
+    &__links {
+        display: flex;
+        gap: 1rem;
+    }
+}
