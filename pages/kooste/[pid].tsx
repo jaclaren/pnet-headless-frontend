@@ -28,6 +28,7 @@ import {
 } from "../../components/CiteScroller/CiteScroller";
 import { CompilationReviewList } from "../../components/CompilationReviewList/CompilationReviewList";
 import { VideoToggleWithCite } from "../../components/VideoToggleWithCite/VideoToggleWithCite";
+import { CompilationHeader } from "./CompilationHeader";
 
 interface IGameProps {
   slug: any;
@@ -99,25 +100,6 @@ export interface IGameAPIRow {
   video: string;
   gameplay_video?: string;
   reviews?: any[];
-}
-
-function CompilationHeader(props: {
-  item: {
-    title:any;
-    developer: any;
-    average_score: any;
-    coverimage: any;
-  };
-}) {
-  return (
-    <div className="product__header game__header">
-      <h1 className="title game__title">{props.item.title}</h1>
-      <div className="label game__developer">{props.item.developer}</div>
-      {props.item.average_score}
-      <img className="game__image" src={props.item.coverimage}></img>
-      <div className="game__scoredist"></div>
-    </div>
-  );
 }
 
 const GamePage: FunctionComponent<IGameProps> = (props) => {
