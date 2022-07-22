@@ -181,8 +181,7 @@ const GamePage: FunctionComponent<IGameProps> = (props) => {
   if (!item) return <></>;
 
   return (
-    <>
-    {JSON.stringify(router.query)}    
+    <>    
       <section className="contentsect contentsect--header">
         <CompilationHeader item={item} />
         <CompilationReviewList reviews={item.reviews as PnetWPEndpointReviewRow[]}/>
