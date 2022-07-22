@@ -5,9 +5,9 @@ import { Navigation } from "../components/Navigation/Navigation";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <main className="pnet">
       <Navigation /> <Component {...pageProps} />
-    </>
+    </main>
   );
 }
 

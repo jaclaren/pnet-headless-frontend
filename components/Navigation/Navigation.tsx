@@ -5,9 +5,9 @@ import { SiteLogo } from "../SiteLogo/SiteLogo";
 export function Navigation() {
   return (
     <nav className="navigation navigation--main">
-      <div className="sitelogo sitelogo--navigation navigation__column">
-        <SiteLogo />
-      </div>
+      <a href="/" className="sitelogo sitelogo--navigation navigation__column">        
+          <SiteLogo />        
+      </a>
       <ul className="navigation__links navigation__column">
         <li className="navigation__link">
           <Link href="/">Etusivu</Link>
