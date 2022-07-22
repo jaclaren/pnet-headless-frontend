@@ -11,7 +11,7 @@ export const CompilationReviewList: FunctionComponent<
   ICompilationReviewListProps
 > = (props) => {
   return (
-    <ul className="review__list">
+    <ul className="review__list compilation__reviewlist">
       {props.reviews.map((review) => {
         return (
           <ReviewCard

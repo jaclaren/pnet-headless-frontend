@@ -1,0 +1,31 @@
+.review {
+    flex: 0 0 auto;
+    display: flex;
+    margin-right: 0.9rem;
+    margin-bottom: 1rem;
+    flex-direction: row;
+    background-color: #1b1b1b;
+    border: solid 1px #ffffff14;
+    border-radius: 0.5rem;
+    padding: 1.15rem;    
+
+    &--card {
+        display: flex;
+    }
+
+    &__col {
+        &:first-child {
+            flex-grow: 2;
+        }
+
+        &--data {
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+
+    &__list {
+        display: flex;
+    }
+}

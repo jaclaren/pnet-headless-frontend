@@ -103,34 +103,10 @@ export interface IGameAPIRow {
 
 function CompilationHeader(props: {
   item: {
-    title:
-      | string
-      | number
-      | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | ReactFragment
-      | ReactPortal
-      | null
-      | undefined;
-    developer:
-      | string
-      | number
-      | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | ReactFragment
-      | ReactPortal
-      | null
-      | undefined;
-    average_score:
-      | string
-      | number
-      | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | ReactFragment
-      | ReactPortal
-      | null
-      | undefined;
-    coverimage: string | undefined;
+    title:any;
+    developer: any;
+    average_score: any;
+    coverimage: any;
   };
 }) {
   return (
